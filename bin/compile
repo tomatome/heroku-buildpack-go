@@ -293,7 +293,7 @@ ensureGo() {
         esac
     fi
 
-    export GOROOT="${goPath}"
+    export GOROOT="${goPath}" GOCACHE="${cache}/${goVersion}/build-cache"
     PATH="${goPath}/bin:${PATH}"
 }
 
@@ -415,7 +415,7 @@ case "${TOOL}" in
             dep ensure
         fi
         massagePkgSpecForVendor
-        
+
         step "Running: go install -v ${FLAGS[@]} ${pkgs}"
         go install -v "${FLAGS[@]}" ${pkgs} 2>&1
     ;;
