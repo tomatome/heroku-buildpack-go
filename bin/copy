@@ -21,6 +21,7 @@ function ctt {
 
 mkdir -p ${TMP}/bin
 mkdir -p ${TMP}/lib/src/github.com/apg/patter/
+mkdir -p ${TMP}/lib/semver_bash/
 mkdir ${TMP}/vendor
 
 # These are the files that are available during release
@@ -29,6 +30,7 @@ ctt bin/detect
 ctt bin/test
 ctt bin/test-compile
 ctt lib/common.sh
+ctt lib/semver_bash/semver.sh
 ctt lib/src/github.com/apg/patter/main.go
 ctt vendor/concurrency.sh
 ctt CHANGELOG.md
