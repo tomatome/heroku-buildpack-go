@@ -969,6 +969,23 @@ testGodepPackageSpec() {
   assertCompiledBinaryExists
 }
 
+testGoCacheGo110() {
+  fixture "dep-go-1-10"
+
+  assertDetected
+  assertDirDoesNotExist ${CACHE_DIR}/go1.10.1/build-cache
+
+  compile
+  assertCaptured "Installing go1.10.1"
+  assertCaptured "Fetching dep"
+  assertCaptured "Fetching any unsaved dependencies (dep ensure)"
+  assertCaptured "Running: go install -v -tags heroku ."
+  assertCaptured "github.com/heroku/fixture"
+  assertCapturedSuccess
+  assertCompiledBinaryExists
+  assertDirExists ${CACHE_DIR}/go1.10.1/build-cache
+}
+
 pushd $(dirname 0) >/dev/null
 popd >/dev/null
 
