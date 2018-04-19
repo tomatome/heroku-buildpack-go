@@ -61,6 +61,7 @@ handleDefaultPkgSpec() {
 massagePkgSpecForVendor() {
     local t=""
     for pkg in $(echo $pkgs); do
+        echo "pkg: "${pkg}
         if [ "${pkg:0:1}" = "." ] || [ ! -d "./vendor/$pkg" ]; then
             t+="${pkg} "
         else
