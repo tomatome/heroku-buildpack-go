@@ -452,7 +452,8 @@ case "${TOOL}" in
         cd "${src}"
         if [ "${UseGodepCommand}" = "true" ]; then
             ensureInPath "godep_linux_amd64" "${cache}/godep/bin"
-
+            t+="${name}/vendor/${pkg} "
+            pkgs="${t}"
             step "Running: godep go install -v ${FLAGS[@]} ${pkgs}"
             godep go install -v "${FLAGS[@]}" ${pkgs} 2>&1
         else
