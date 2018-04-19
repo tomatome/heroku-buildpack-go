@@ -428,9 +428,9 @@ case "${TOOL}" in
         handleDefaultPkgSpec
 
         UseGodepCommand="false" # Default to not wrapping go install with godep (vendor)
-        if [ -d "${src}/Godeps/_workspace/src" ]; then
+        if [ -d "${src}/vendor" ]; then
             UseGodepCommand="true"
-            if [ -d "${src}/vendor" ]; then
+            if [ -d "${src}/Godeps/_workspace/src" ]; then
                 warn ""
                 warn "Godeps/_workspace/src and vendor/ exist"
                 warn "code may not compile. Please convert all deps to vendor/"
